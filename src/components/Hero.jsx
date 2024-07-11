@@ -1,4 +1,5 @@
 import React from "react";
+import CustomButton from "./CustomButton";
 
 const Hero = () => {
   return (
@@ -17,9 +18,10 @@ const Hero = () => {
         <span className="text-blue-400 font-medium "> super hero </span>.
         Affected by extreme body changes and unable to fit through doors.
       </p>
-      <button className="px-8 py-4 rounded-md border-[2px] border-blue-700 border-solid bg-slate-950 blueShadow duration-200">
+      {/* <button className="px-8 py-4 rounded-md border-[2px] border-blue-700 border-solid bg-slate-950 blueShadow duration-200">
         <p>Accept & Begin</p>
-      </button>
+      </button> */}
+      <CustomButton text={"Accept & Begin"} />
     </div>
   );
 };
