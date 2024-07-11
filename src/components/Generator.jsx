@@ -36,7 +36,15 @@ const Header = (props) => {
 };
 
 const Generator = (props) => {
-  const { workout, setWorkout, muscle, setMuscle, goal, setGoal } = props;
+  const {
+    workout,
+    setWorkout,
+    muscle,
+    setMuscle,
+    goal,
+    setGoal,
+    handleFormulate,
+  } = props;
   const [showSec, setShowSec] = useState(false);
   function handleWOClick(index) {
     switch (index) {
@@ -101,10 +109,6 @@ const Generator = (props) => {
       setShowSec(false);
     }
   }
-
-  console.log(workout);
-  console.log(muscle);
-  console.log(goal);
 
   return (
     <>
@@ -193,7 +197,7 @@ const Generator = (props) => {
           ))}
         </div>
         <div className="flex flex-col items-center justify-center">
-          <CustomButton text={"formulate"} />
+          <CustomButton text={"formulate"} handleClick={handleFormulate} />
         </div>
       </SectionWrapper>
     </>

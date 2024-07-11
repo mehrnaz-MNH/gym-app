@@ -1,22 +1,36 @@
 import { useState } from "react";
 import { Generator, Hero, Workout } from "./components";
+import { generateWorkout } from "./utils/Planner";
 
 function App() {
-  const [workout, setWorkout] = useState("individual");
-  const [muscle, setMuscle] = useState([]);
+  const [workout, setWorkout] = useState(null);
+  const [poison, setPoison] = useState("individual");
+  const [muscles, setMuscles] = useState([]);
   const [goal, setGoal] = useState("strength_power");
+
+  function updateWorkout() {
+    if (muscles.length < 1) {
+      return;
+    }
+    let newWorkout = generateWorkout({ poison, muscles, goal });
+    setWorkout(newWorkout);
+    console.log(newWorkout);
+
+    window.location.href = "#workout";
+  }
   return (
     <main className="min-h-screen flex flex-col bg-gradient-to-r from-slate-800 to-slate-950 text-white text-sm sm:text-base">
       <Hero />
       <Generator
-        workout={workout}
-        setWorkout={setWorkout}
-        muscle={muscle}
-        setMuscle={setMuscle}
+        workout={poison}
+        setWorkout={setPoison}
+        muscle={muscles}
+        setMuscle={setMuscles}
         goal={goal}
         setGoal={setGoal}
+        handleFormulate={updateWorkout}
       />
-      <Workout />
+      {workout && <Workout wPlan={workout} />}
     </main>
   );
 }
