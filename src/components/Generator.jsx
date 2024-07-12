@@ -114,7 +114,7 @@ const Generator = (props) => {
     <>
       <SectionWrapper
         header={"Generate your Workout"}
-        title={["It's", "Huge", "o'clock"]}
+        title={["Test", "your", "Limits"]}
       >
         <Header
           index={Headers[0].index}

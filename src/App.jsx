@@ -10,6 +10,7 @@ function App() {
 
   function updateWorkout() {
     if (muscles.length < 1) {
+      alert("You Need To select Muscle!");
       return;
     }
     let newWorkout = generateWorkout({ poison, muscles, goal });
