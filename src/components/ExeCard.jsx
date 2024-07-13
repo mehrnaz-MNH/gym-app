@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const ExeCard = (props) => {
   const { exc, index } = props;
   const [count, setCount] = useState(0);
-  //   class="flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-x-4"
   function handleClick() {
     if (count > 4) {
       setCount(0);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Generator, Hero, Workout } from "./components";
+import { Generator, Hero, Workout, BottomSection } from "./components";
 import { generateWorkout } from "./utils/Planner";
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
     }
     let newWorkout = generateWorkout({ poison, muscles, goal });
     setWorkout(newWorkout);
-    console.log(newWorkout);
 
     window.location.href = "#workout";
   }
@@ -32,6 +31,7 @@ function App() {
         handleFormulate={updateWorkout}
       />
       {workout && <Workout wPlan={workout} />}
+      <BottomSection />
     </main>
   );
 }
