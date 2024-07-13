@@ -2,7 +2,15 @@ import React, { useState } from "react";
 
 const ExeCard = (props) => {
   const { exc, index } = props;
+  const [count, setCount] = useState(0);
   //   class="flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-x-4"
+  function handleClick() {
+    if (count > 4) {
+      setCount(0);
+      return;
+    }
+    setCount((prev) => prev + 1);
+  }
   const [model, setModel] = useState(false);
   return (
     <div className="flex flex-col  bg-slate-950 p-4 gap-2">
@@ -32,14 +40,18 @@ const ExeCard = (props) => {
           <p>Tempo</p>
           <p>{exc.tempo}</p>
         </div>
-        <div className="border border-solid border-gray-700 p-2">
+        <button
+          className="border border-solid border-gray-700 p-2"
+          onClick={handleClick}
+          key={index}
+        >
           <p>Sets Completed</p>
-          <p>0 / 5</p>
-        </div>
+          <p>{count} / 5</p>
+        </button>
       </div>
       <div className="bg-slate-800 p-4 flex flex-col">
         <button
-          className="relative p-3 flex justify-center items-center p-3"
+          className="relative p-3 flex justify-center items-center "
           onClick={() => setModel(!model)}
         >
           <p className="absolute left-3">Description</p>

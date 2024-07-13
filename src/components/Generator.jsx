@@ -111,96 +111,95 @@ const Generator = (props) => {
   }
 
   return (
-    <>
-      <SectionWrapper
-        header={"Generate your Workout"}
-        title={["Test", "your", "Limits"]}
-      >
-        <Header
-          index={Headers[0].index}
-          title={Headers[0].title}
-          desc={Headers[0].desc}
-        />
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {Object.keys(WORKOUTS).map((type, index) => (
-            <button
-              key={index}
-              className={`py-4 px-4 rounded-lg border-[2px] border-solid bg-slate-950 duration-200 hover:border-blue-700 ${
-                workout == type ? "border-blue-400" : " border-blue-950"
-              }`}
-              onClick={() => handleWOClick(index)}
-            >
-              <p className="capitalize">{type.replace("_", " ")}</p>
-            </button>
-          ))}
-        </div>
-
-        <Header
-          index={Headers[1].index}
-          title={Headers[1].title}
-          desc={Headers[1].desc}
-        />
-
-        <div className="bg-slate-950    rounded-lg flex flex-col">
+    <SectionWrapper
+      id={"generate"}
+      header={"Generate your Workout"}
+      title={["Test", "your", "Limits"]}
+    >
+      <Header
+        index={Headers[0].index}
+        title={Headers[0].title}
+        desc={Headers[0].desc}
+      />
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {Object.keys(WORKOUTS).map((type, index) => (
           <button
-            className="relative p-3 flex justify-center items-center"
-            onClick={() => setShowSec(!showSec)}
+            key={index}
+            className={`py-4 px-4 rounded-lg border-[2px] border-solid bg-slate-950 duration-200 hover:border-blue-700 ${
+              workout == type ? "border-blue-400" : " border-blue-950"
+            }`}
+            onClick={() => handleWOClick(index)}
           >
-            <p>
-              {muscle.length === 0
-                ? `select muscle groups${
-                    workout === "individual" ? " (up to 3)" : ""
-                  }`
-                : muscle.join(" & ")}
-            </p>
-            <i className="fa-solid fa-caret-down absolute right-3 top-1/2 -translate-y-1/2"></i>
+            <p className="capitalize">{type.replace("_", " ")}</p>
           </button>
-          {showSec && (
-            <div className="relative p-3 flex flex-col  justify-center items-center">
-              {workout == "individual"
-                ? WORKOUTS.individual.map((m) => (
-                    <button
-                      className="p-3 hover:text-blue-500"
-                      onClick={() => handleMuscleClick(m)}
-                    >
-                      {m}
-                    </button>
-                  ))
-                : Object.keys(WORKOUTS[workout]).map((m) => (
-                    <button
-                      className="p-3 hover:text-blue-500"
-                      onClick={() => handleMuscleClick(m)}
-                    >
-                      {m}
-                    </button>
-                  ))}
-            </div>
-          )}
-        </div>
+        ))}
+      </div>
 
-        <Header
-          index={Headers[2].index}
-          title={Headers[2].title}
-          desc={Headers[2].desc}
-        />
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {Object.keys(SCHEMES).map((type, index) => (
-            <button
-              key={index}
-              className={`py-4 px-4 rounded-lg border-[2px] border-solid bg-slate-950 duration-200 hover:border-blue-700 ${
-                goal == type ? "border-blue-400" : " border-blue-950"
-              }`}
-              onClick={() => handleScClick(index)}
-            >
-              <p className="capitalize">{type.replace("_", " & ")}</p>
-            </button>
-          ))}
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <CustomButton text={"formulate"} handleClick={handleFormulate} />
-        </div>
-      </SectionWrapper>
-    </>
+      <Header
+        index={Headers[1].index}
+        title={Headers[1].title}
+        desc={Headers[1].desc}
+      />
+
+      <div className="bg-slate-950    rounded-lg flex flex-col">
+        <button
+          className="relative p-3 flex justify-center items-center"
+          onClick={() => setShowSec(!showSec)}
+        >
+          <p>
+            {muscle.length === 0
+              ? `select muscle groups${
+                  workout === "individual" ? " (up to 3)" : ""
+                }`
+              : muscle.join(" & ")}
+          </p>
+          <i className="fa-solid fa-caret-down absolute right-3 top-1/2 -translate-y-1/2"></i>
+        </button>
+        {showSec && (
+          <div className="relative p-3 flex flex-col  justify-center items-center">
+            {workout == "individual"
+              ? WORKOUTS.individual.map((m) => (
+                  <button
+                    className="p-3 hover:text-blue-500"
+                    onClick={() => handleMuscleClick(m)}
+                  >
+                    {m}
+                  </button>
+                ))
+              : Object.keys(WORKOUTS[workout]).map((m) => (
+                  <button
+                    className="p-3 hover:text-blue-500"
+                    onClick={() => handleMuscleClick(m)}
+                  >
+                    {m}
+                  </button>
+                ))}
+          </div>
+        )}
+      </div>
+
+      <Header
+        index={Headers[2].index}
+        title={Headers[2].title}
+        desc={Headers[2].desc}
+      />
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {Object.keys(SCHEMES).map((type, index) => (
+          <button
+            key={index}
+            className={`py-4 px-4 rounded-lg border-[2px] border-solid bg-slate-950 duration-200 hover:border-blue-700 ${
+              goal == type ? "border-blue-400" : " border-blue-950"
+            }`}
+            onClick={() => handleScClick(index)}
+          >
+            <p className="capitalize">{type.replace("_", " & ")}</p>
+          </button>
+        ))}
+      </div>
+      <div className="flex flex-col items-center justify-center">
+        <CustomButton text={"formulate"} handleClick={handleFormulate} />
+      </div>
+    </SectionWrapper>
   );
 };
 

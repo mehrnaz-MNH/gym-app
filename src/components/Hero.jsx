@@ -21,7 +21,12 @@ const Hero = () => {
       {/* <button className="px-8 py-4 rounded-md border-[2px] border-blue-700 border-solid bg-slate-950 blueShadow duration-200">
         <p>Accept & Begin</p>
       </button> */}
-      <CustomButton text={"Accept & Begin"} />
+      <CustomButton
+        text={"Accept & Begin"}
+        handleClick={() => {
+          window.location.href = "#generate";
+        }}
+      />
     </div>
   );
 };
